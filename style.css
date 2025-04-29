@@ -1,3 +1,298 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Rubik:wght@300;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+  background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+  color: #e0e0e0;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* HEADER */
+header {
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  color: #ff0040;
+}
+
+header input {
+  padding: 0.75rem 1rem;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  backdrop-filter: blur(5px);
+}
+
+/* DARK MODE TOGGLE */
+.switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #444;
+  border-radius: 24px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #00eaff;
+}
+
+input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+/* FILTER CONTROLS */
+#controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+}
+
+#controls select {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: #e0e0e0;
+  border: none;
+  border-radius: 50px;
+  backdrop-filter: blur(5px);
+}
+
+/* CAR LIST */
+#car-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* CAR CARD */
+.car {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 25px;
+  padding-bottom: 1rem;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.car:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(255, 0, 64, 0.2);
+}
+
+.car img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.car h2 {
+  font-family: 'Orbitron', sans-serif;
+  margin: 1rem 0 0.5rem;
+  font-size: 1.3rem;
+  color: #ff0040;
+}
+
+.car p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* BRAND LOGO */
+.brand-logo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  opacity: 0.9;
+}
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* BOOK NOW BUTTON */
+.car button {
+  margin-top: 1rem;
+  background: linear-gradient(to right, #ff0040, #b200ff);
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: background 0.3s ease;
+}
+
+.car button:hover {
+  background: linear-gradient(to right, #b200ff, #ff0040);
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #1c1c1c;
+  color: white;
+  padding: 2rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 40px rgba(255, 0, 64, 0.3);
+  position: relative;
+}
+
+#close-modal {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* FORM */
+#booking-form input {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.6rem 0;
+  border-radius: 10px;
+  border: none;
+  background: #333;
+  color: white;
+}
+
+#booking-form button {
+  background: #00eaff;
+  color: black;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+#booking-form button:hover {
+  background: #00c7d4;
+}
+
+/* FOOTER */
+footer {
+  background: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+footer .social-links a {
+  color: #ff0040;
+  margin: 0 0.4rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+footer .social-links a:hover {
+  color: #fff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header input {
+    width: 95%;
+  }
+
+  .car img {
+    height: 160px;
+  }
+}
 /* ==== ENHANCEMENTS ==== */
 
 /* Fade/slide car cards into view */
