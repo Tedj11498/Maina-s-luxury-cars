@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxury Car Sales</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Luxury Car Sales</h1>
+    <input type="text" id="searchBar" placeholder="Search by brand or model..." />
+  </header>
+
+  <main>
+    <section id="controls">
+      <label for="sort">Sort By:</label>
+      <select id="sort">
+        <option value="">-- Select --</option>
+        <option value="price">Price</option>
+        <option value="hp">Horsepower</option>
+      </select>
+    </section>
+
+    <section id="car-list">
+      <div class="car">
+        <img src="images/audi.jpg" alt="Audi A6" />
+        <h2>Audi A6</h2>
+        <p><strong>Engine:</strong> 2.0L TFSI</p>
+        <p><strong>Color:</strong> Black</p>
+        <p><strong>Horsepower:</strong> 261 HP</p>
+        <p><strong>Price:</strong> $55,000</p>
+        <button onclick="openBooking('Audi A6')">Book Now</button>
+      </div>
+
+      <div class="car">
+        <img src="images/bmw.jpg" alt="BMW X5" />
+        <h2>BMW X5</h2>
+        <p><strong>Engine:</strong> 3.0L I6</p>
+        <p><strong>Color:</strong> White</p>
+        <p><strong>Horsepower:</strong> 335 HP</p>
+        <p><strong>Price:</strong> $65,000</p>
+        <button onclick="openBooking('BMW X5')">Book Now</button>
+      </div>
+
+      <div class="car">
+        <img src="images/range-rover.jpg" alt="Range Rover Velar" />
+        <h2>Range Rover Velar</h2>
+        <p><strong>Engine:</strong> 2.0L Turbo</p>
+        <p><strong>Color:</strong> Gray</p>
+        <p><strong>Horsepower:</strong> 247 HP</p>
+        <p><strong>Price:</strong> $70,000</p>
+        <button onclick="openBooking('Range Rover Velar')">Book Now</button>
+      </div>
+
+      <div class="car">
+        <img src="images/mercedes.jpg" alt="Mercedes E-Class" />
+        <h2>Mercedes E-Class</h2>
+        <p><strong>Engine:</strong> 2.0L Turbo</p>
+        <p><strong>Color:</strong> Blue</p>
+        <p><strong>Horsepower:</strong> 255 HP</p>
+        <p><strong>Price:</strong> $62,000</p>
+        <button onclick="openBooking('Mercedes E-Class')">Book Now</button>
+      </div>
+
+      <div class="car">
+        <img src="images/porsche.jpg" alt="Porsche 911 Carrera" />
+        <h2>Porsche 911 Carrera</h2>
+        <p><strong>Engine:</strong> 3.0L Twin-Turbo</p>
+        <p><strong>Color:</strong> Red</p>
+        <p><strong>Horsepower:</strong> 379 HP</p>
+        <p><strong>Price:</strong> $101,200</p>
+        <button onclick="openBooking('Porsche 911 Carrera')">Book Now</button>
+      </div>
+      <div class="car">
+        <img src="images/Ram.jpg" alt="Ram" />
+        <h2>Ram</h2>
+        <p><strong>Engine:</strong> 2.0L TFSI</p>
+        <p><strong>Color:</strong> Black</p>
+        <p><strong>Horsepower:</strong> 261 HP</p>
+        <p><strong>Price:</strong> $100,000</p>
+        <button onclick="openBooking('Ram')">Book Now</button>
+      </div>
+
+      <div class="car">
+        <img src="images/bentley.jpg" alt="Bentley Continental GT" />
+        <h2>Bentley Continental GT</h2>
+        <p><strong>Engine:</strong> 6.0L W12</p>
+        <p><strong>Color:</strong> Silver</p>
+        <p><strong>Horsepower:</strong> 626 HP</p>
+        <p><strong>Price:</strong> $231,000</p>
+        <button onclick="openBooking('Bentley Continental GT')">Book Now</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="booking-modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="close-modal">&times;</span>
+      <h2>Book a Test Drive</h2>
+      <form id="booking-form">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <input type="text" id="car" placeholder="Car Model" readonly />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('booking-modal');
+    const closeModal = document.getElementById('close-modal');
+    const form = document.getElementById('booking-form');
+    const carInput = document.getElementById('car');
+
+    function openBooking(model) {
+      modal.classList.remove('hidden');
+      carInput.value = model;
+    }
+
+    closeModal.onclick = () => modal.classList.add('hidden');
+
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      alert(`Booking submitted for ${carInput.value}. We will contact you soon!`);
+      modal.classList.add('hidden');
+      form.reset();
+    };
+  </script>
+</body>
+</html>
