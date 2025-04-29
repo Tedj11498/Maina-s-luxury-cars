@@ -16,8 +16,9 @@ body {
 
 /* HEADER */
 header {
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(270deg, #ff0040, #b200ff, #00eaff);
+  background-size: 600% 600%;
+  animation: gradientShift 15s ease infinite;
   color: #fff;
   padding: 2rem 1rem;
   text-align: center;
@@ -129,10 +130,14 @@ input:checked + .slider::before {
   padding-bottom: 1rem;
   text-align: center;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideIn 0.6s forwards;
+  animation-delay: calc(var(--i) * 0.15s);
+  transition: all 0.3s ease;
 }
 
 .car:hover {
@@ -160,23 +165,6 @@ input:checked + .slider::before {
   color: #ccc;
 }
 
-/* BRAND LOGO */
-.brand-logo {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 40px;
-  height: 40px;
-  opacity: 0.9;
-}
-
-.brand-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* BOOK NOW BUTTON */
 .car button {
   margin-top: 1rem;
   background: linear-gradient(to right, #ff0040, #b200ff);
@@ -188,10 +176,25 @@ input:checked + .slider::before {
   font-weight: 500;
   letter-spacing: 1px;
   transition: background 0.3s ease;
+  position: relative;
+  animation: pulse 2s infinite;
 }
 
-.car button:hover {
-  background: linear-gradient(to right, #b200ff, #ff0040);
+/* BRAND LOGO */
+.brand-logo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  opacity: 0.9;
+  animation: floatLogo 3s ease-in-out infinite;
+}
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* MODAL */
@@ -279,6 +282,32 @@ footer .social-links a:hover {
   color: #fff;
 }
 
+/* KEYFRAMES */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255,0,64, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(255,0,64, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,0,64, 0); }
+}
+
+@keyframes floatLogo {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
 /* RESPONSIVE */
 @media (max-width: 600px) {
   header h1 {
@@ -293,57 +322,6 @@ footer .social-links a:hover {
     height: 160px;
   }
 }
-/* ==== ENHANCEMENTS ==== */
 
-/* Fade/slide car cards into view */
-.car {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeSlideIn 0.6s forwards;
-  animation-delay: calc(var(--i) * 0.15s);
-}
-
-@keyframes fadeSlideIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Loop animated background header */
-header {
-  background: linear-gradient(270deg, #ff0040, #b200ff, #00eaff);
-  background-size: 600% 600%;
-  animation: gradientShift 15s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Button pulse effect */
-.car button {
-  position: relative;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(255,0,64, 0.4); }
-  70% { box-shadow: 0 0 0 15px rgba(255,0,64, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255,0,64, 0); }
-}
-
-/* Floating logo hover animation */
-.brand-logo {
-  animation: floatLogo 3s ease-in-out infinite;
-}
-
-@keyframes floatLogo {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-  100% { transform: translateY(0); }
-}
 
 
