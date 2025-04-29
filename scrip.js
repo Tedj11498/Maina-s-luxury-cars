@@ -75,20 +75,25 @@ function displayCars(filter = '', sortBy = '') {
   }
 
   carList.innerHTML = '';
-  filteredCars.forEach(car => {
-    const carCard = document.createElement('div');
-    carCard.className = 'car';
-    carCard.innerHTML = `
-      <img src="${car.image}" alt="${car.brand} ${car.model}" />
-      <h2>${car.brand} ${car.model}</h2>
-      <p><strong>Engine:</strong> ${car.engine}</p>
-      <p><strong>Color:</strong> ${car.color}</p>
-      <p><strong>Horsepower:</strong> ${car.hp} HP</p>
-      <p><strong>Price:</strong> $${car.price.toLocaleString()}</p>
-      <button onclick="openBooking('${car.brand} ${car.model}')">Book Now</button>
-    `;
-    carList.appendChild(carCard);
-  });
+ filtered.forEach((car, index) => {
+  const carCard = document.createElement('div');
+  carCard.className = 'car';
+  carCard.style.setProperty('--i', index); // 🔥 animation delay per card
+
+  carCard.innerHTML = `
+    <span class="brand-logo"><img src="${car.logo}" alt="${car.brand} logo" /></span>
+    <img src="${car.image}" alt="${car.brand} ${car.model}" />
+    <h2>${car.brand} ${car.model}</h2>
+    <p><strong>Engine:</strong> ${car.engine}</p>
+    <p><strong>Color:</strong> ${car.color}</p>
+    <p><strong>Horsepower:</strong> ${car.hp} HP</p>
+    <p><strong>Price:</strong> $${car.price.toLocaleString()}</p>
+    <button onclick="openBooking('${car.brand} ${car.model}')">Book Now</button>
+  `;
+
+  carList.appendChild(carCard);
+});
+
 }
 
 function openBooking(model) {
