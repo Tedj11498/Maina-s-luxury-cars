@@ -6,7 +6,8 @@ const cars = [
     color: 'Black',
     hp: 261,
     price: 55000,
-    image: 'images/audi.jpg'
+    image: 'images/audi.jpg',
+    logo: 'images/brands/audi-logo.png'
   },
   {
     brand: 'BMW',
@@ -15,7 +16,8 @@ const cars = [
     color: 'White',
     hp: 335,
     price: 65000,
-    image: 'images/bmw.jpg'
+    image: 'images/bmw.jpg',
+    logo: 'images/brands/bmw-logo.png'
   },
   {
     brand: 'Range Rover',
@@ -24,7 +26,8 @@ const cars = [
     color: 'Gray',
     hp: 247,
     price: 70000,
-    image: 'images/range-rover.jpg'
+    image: 'images/range-rover.jpg',
+    logo: 'images/brands/range-logo.png'
   },
   {
     brand: 'Mercedes',
@@ -33,7 +36,8 @@ const cars = [
     color: 'Blue',
     hp: 255,
     price: 62000,
-    image: 'images/mercedes.jpg'
+    image: 'images/mercedes.jpg',
+    logo: 'images/brands/mercedes-logo.png'
   },
   {
     brand: 'Porsche',
@@ -42,7 +46,8 @@ const cars = [
     color: 'Red',
     hp: 379,
     price: 101200,
-    image: 'images/porsche.jpg'
+    image: 'images/porsche.jpg',
+    logo: 'images/brands/porsche-logo.png'
   },
   {
     brand: 'Bentley',
@@ -51,7 +56,8 @@ const cars = [
     color: 'Silver',
     hp: 626,
     price: 231000,
-    image: 'images/bentley.jpg'
+    image: 'images/bentley.jpg',
+    logo: 'images/brands/bentley-logo.png'
   }
 ];
 
@@ -75,25 +81,24 @@ function displayCars(filter = '', sortBy = '') {
   }
 
   carList.innerHTML = '';
- filtered.forEach((car, index) => {
-  const carCard = document.createElement('div');
-  carCard.className = 'car';
-  carCard.style.setProperty('--i', index); // 🔥 animation delay per card
+  filteredCars.forEach((car, index) => {
+    const carCard = document.createElement('div');
+    carCard.className = 'car';
+    carCard.style.setProperty('--i', index); // 🔥 animation delay per card
 
-  carCard.innerHTML = `
-    <span class="brand-logo"><img src="${car.logo}" alt="${car.brand} logo" /></span>
-    <img src="${car.image}" alt="${car.brand} ${car.model}" />
-    <h2>${car.brand} ${car.model}</h2>
-    <p><strong>Engine:</strong> ${car.engine}</p>
-    <p><strong>Color:</strong> ${car.color}</p>
-    <p><strong>Horsepower:</strong> ${car.hp} HP</p>
-    <p><strong>Price:</strong> $${car.price.toLocaleString()}</p>
-    <button onclick="openBooking('${car.brand} ${car.model}')">Book Now</button>
-  `;
+    carCard.innerHTML = `
+      <span class="brand-logo"><img src="${car.logo}" alt="${car.brand} logo" /></span>
+      <img src="${car.image}" alt="${car.brand} ${car.model}" />
+      <h2>${car.brand} ${car.model}</h2>
+      <p><strong>Engine:</strong> ${car.engine}</p>
+      <p><strong>Color:</strong> ${car.color}</p>
+      <p><strong>Horsepower:</strong> ${car.hp} HP</p>
+      <p><strong>Price:</strong> $${car.price.toLocaleString()}</p>
+      <button onclick="openBooking('${car.brand} ${car.model}')">Book Now</button>
+    `;
 
-  carList.appendChild(carCard);
-});
-
+    carList.appendChild(carCard);
+  });
 }
 
 function openBooking(model) {
@@ -114,3 +119,4 @@ searchBar.addEventListener('input', () => displayCars(searchBar.value, sortSelec
 sortSelect.addEventListener('change', () => displayCars(searchBar.value, sortSelect.value));
 
 displayCars();
+
